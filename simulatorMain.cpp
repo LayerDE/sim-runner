@@ -17,9 +17,11 @@
 
 using namespace std;
 
-const int sim_cnt = 2;
+FILE *fp;
 
-FILE *fp[sim_cnt];
+pushed_follower* trail;
+
+simulator* sim;
 
 float rad2deg(float in){
   return in * 45.0 / M_PI_4;
@@ -45,42 +47,69 @@ void car_point_out(void* context, point x0, float direction){
     _point_out((FILE*)context, "Car", x0.x, x0.y, direction);
 }
 
-// simulator(float bbx, float bby, float bbwb, float bbr2h, float bbangle, float bbalpha, float followerlen, float followerbeta, float step_size)
+float alpha = 0;
+float beta = 0;
 
-int main(int argc, char *argv[]){
+float get_steering(){
+    return alpha;
+}
+
+float get_hitch(){
+    return beta;
+}
+
+int get_speed(){
+    return 125;
+}
+
+void init(){
+
     const float bbwb = 0.35, bbr2h = 0.05, followerlen = 0.60;
     const float bbx = 0.0, bby = 0.0, bbangle = 0.0, bbalpha = deg2rad(20);
     const float followerbeta = deg2rad(0);
-
-    char *filename[sim_cnt] = {"0.txt","1.txt"};
+    beta = followerbeta;
+    alpha = bbalpha;
+    char *filename = "out.txt";
 
     // open the file for writing
-    for(int i =0; i < sim_cnt; i++)
-        if ((fp[i] = fopen(filename[i], "w")) == NULL)
+    if ((fp = fopen(filename, "w")) == NULL)
         {
-            printf("Error opening the file %s", filename[i]);
-            return -1;
+            printf("Error opening the file %s", filename);
         }
 
 //    const float stepsize = 0.001;
     cout << "Simulator init..." << endl;
-    simulator* sim[sim_cnt] = {new simulator(fp[0], bbx, bby, bbwb, bbr2h, bbangle, -bbalpha, followerlen, followerbeta, 0.0001)
-    ,new simulator(fp[1], bbx, bby, bbwb, bbr2h, bbangle, bbalpha, followerlen, followerbeta, 0.001)};
+    sim = new simulator(fp, bbx, bby, bbwb, bbr2h, bbangle, -bbalpha, followerlen, followerbeta, 0.0010);
     cout << "Simulate..." << endl;
+    
+
+    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(20), 20, 50.0,
+            get_steering, get_hitch, get_speed,
+            0, 0, 0);
+}
+
+void cleanup(){
+    fclose(fp);      
+    cout << "Simulation finished" << endl;
+    delete sim;
+    delete trail;
+}
+
+// simulator(float bbx, float bby, float bbwb, float bbr2h, float bbangle, float bbalpha, float followerlen, float followerbeta, float step_size)
+
+int main(int argc, char *argv[]){
+    init();
     while(1){
         cout << "wait" << endl;
         cin.ignore();
-        for(int i =0; i < sim_cnt; i++){
-            sim[i]->set_output(car_point_out, trail_point_out,false);
-            cout << "sim[" << i << "]" << endl;
-            sim[i]->simulate(-0.01);
-            float temp = rad2deg(sim[i]->output());
-            cout << "sim[" << i << "] beta:" << temp << endl;
+        {
+            sim->set_output(car_point_out, trail_point_out,false);
+            cout << "sim[" << sim->get_distance() << "]" << endl;
+            sim->simulate(-0.01);
+            float temp = rad2deg(sim->output());
+            cout << "beta:" << temp << endl;
         }
     }
-    for(int i =0; i < sim_cnt; i++)
-        fclose(fp[i]);      
-    cout << "Simulation finished" << endl;
-    //delete[] sim;
+    cleanup();
     return 0;
 }
