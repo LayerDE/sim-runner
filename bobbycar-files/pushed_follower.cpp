@@ -4,6 +4,9 @@
 #include "math_functions.h"
 
 
+#include <stdio.h>
+
+
 typedef struct {float beta_start; float beta_end; float steering_angle;} lookup_steering;
 
 static inline float pow2(float x){
@@ -35,9 +38,6 @@ pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2t
     car_wheelbase = c_wheelbase;
     alpha_lookup_size = lookup_alpha_size;
 
-    // allocating alpha lookup
-    alpha_lookup = new float[alpha_lookup_size];
-
     // allocating alpha sim lookup
     alpha_sim_lookup = new float*[alpha_lookup_size/2];
     for(int i = 0; i < alpha_lookup_size/2; i++)
@@ -53,14 +53,10 @@ pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2t
 
 pushed_follower::~pushed_follower(){
     delete alpha_calc;
-    delete [] alpha_lookup;
     for(int i = 0; i < alpha_lookup_size/2; i++)
         delete [] alpha_sim_lookup[i];
     delete [] alpha_sim_lookup;
 }
-
-        float get_des_steering(float real_beta, float des_beta);
-        float get_stable_steering(float des_beta);
 
 double pushed_follower::calculate(int des_speed, float des_steering){ // simple pid
     isPoint = get_hitch_angle();
@@ -75,18 +71,11 @@ float pushed_follower::calc_alpha_const(float beta){ // todo
     if(fabs(beta)> beta_max){
         return 1/0 * SIGN(beta);
     }
-    unsigned int index = round(fabs(beta) / (alpha_max/(float)alpha_lookup_size));
-    return alpha_lookup[index] * SIGN(beta);
+    return beta/c_alpha_beta_factor;
 }
 
 float pushed_follower::calc_beta_const(float alpha_steer){ // todo
-    if(alpha_steer == 0.0)
-        return 0.0;
-    float V_bw = car_wheelbase/tan(alpha_steer);
-    float V_fbw = sqrt(pow2(V_bw)+pow2(car2hitch));
-    float delta_2 = asin(car2hitch/V_fbw);
-    float delta_1 = asin(hitch2axle/V_fbw);
-    return delta_1+delta_2;
+    return alpha_steer * c_alpha_beta_factor;;
     //float delta_2 = sin(hitch2axle/sqrt(pow2(V_bw)+pow2(car2hitch)));
     //return delta_1;
 }
@@ -108,20 +97,20 @@ void pushed_follower::create_alpha_sim_lookup(float distance){
     // todo
 }
 
+
+//linear
 void pushed_follower::create_alpha_lookup(){
-    // get max
-    float result;
-    float testval = 10.0;
-    float step = testval / 2;
-    do{
-        result = calc_beta_const(testval);
-        if(result < alpha_max)
-            testval -= step;
-        else
-            testval += step;
-        step /= 2;
-    } while(isNear(result,beta_max,0.25));
-    // generate lookup
-    for(int i = 0; i < alpha_lookup_size; i++)
-        alpha_lookup[i] = calc_beta_const(alpha_max * (i+1) / alpha_lookup_size);
+    float alpha_steer = deg2rad(10);
+    float V_bw = car_wheelbase/tan(alpha_steer);
+    float V_fbw = sqrt(pow2(V_bw)+pow2(car2hitch));
+    float delta_2 = asin(car2hitch/V_fbw);
+    float delta_1 = asin(hitch2axle/V_fbw);
+    float beta = delta_1+delta_2;
+    c_alpha_beta_factor = beta/alpha_steer;
+    alpha_max = calc_alpha_const(beta_max);
+    printf("const_factor: %f\n", c_alpha_beta_factor);
+    for(float i = 0; i<20; i+=1.75){
+        float i_star = deg2rad(i);
+        printf("i:%f a:%f b:%f\n",i,rad2deg(calc_alpha_const(i_star)), rad2deg(calc_beta_const(i_star)));
+    }
 }

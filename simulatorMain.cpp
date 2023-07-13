@@ -62,11 +62,13 @@ int get_speed(){
     return 125;
 }
 
+
+ const float des_beta = deg2rad(-10);
 void init(){
 
     const float bbwb = 0.35, bbr2h = 0.05, followerlen = 0.60;
     const float bbx = 0.0, bby = 0.0, bbangle = 0.0, bbalpha = deg2rad(20);
-    const float followerbeta = deg2rad(0);
+    const float followerbeta = deg2rad(10);
     beta = followerbeta;
     alpha = bbalpha;
     char *filename = "out.txt";
@@ -79,7 +81,7 @@ void init(){
 
 //    const float stepsize = 0.001;
     cout << "Simulator init..." << endl;
-    sim = new simulator(fp, bbx, bby, bbwb, bbr2h, bbangle, -bbalpha, followerlen, followerbeta, 0.0010);
+    sim = new simulator(fp, bbx, bby, bbwb, bbr2h, bbangle, bbalpha, followerlen, followerbeta, 0.0010);
     cout << "Simulate..." << endl;
     
 
@@ -105,9 +107,11 @@ int main(int argc, char *argv[]){
         {
             sim->set_output(car_point_out, trail_point_out,false);
             cout << "sim[" << sim->get_distance() << "]" << endl;
-            sim->simulate(-0.01);
-            float temp = rad2deg(sim->output());
-            cout << "beta:" << temp << endl;
+            alpha = trail->calc_alpha_const(beta);
+            sim->set_alpha(alpha);
+            sim->simulate(-0.5);
+            beta = sim->output();
+            cout << "alpha:" << rad2deg(alpha)<< "\tbeta:" << rad2deg(beta) << endl;
         }
     }
     cleanup();

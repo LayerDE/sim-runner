@@ -20,11 +20,11 @@ class pushed_follower{
         float calc_alpha(float beta_old, float beta_new);
         float calc_beta(float alpha, float beta_old, float distance);
     private:
+        float c_alpha_beta_factor;
         float simulator_distance;
         float beta_max;
         unsigned int alpha_lookup_size;
         float alpha_max;
-        float* alpha_lookup;
         float** alpha_sim_lookup;
         PID *alpha_calc;
         simulator simulation;
