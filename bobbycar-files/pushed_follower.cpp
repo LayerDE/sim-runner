@@ -98,7 +98,8 @@ float pushed_follower::calc_beta(float alpha, float beta_old, float distance){
 
 float pushed_follower::create_alpha_sim(float beta_old, float beta_new, float precicion, float distance){
     //check possibility
-
+    if(fabs(beta_old)>beta_max || fabs(beta_new)>beta_max)
+        return 0;
     float test_val;
     float low;
     float high;

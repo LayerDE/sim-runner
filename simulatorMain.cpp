@@ -107,9 +107,9 @@ int main(int argc, char *argv[]){
         {
             sim->set_output(car_point_out, trail_point_out,false);
             cout << "sim[" << sim->get_distance() << "]" << endl;
-            alpha = trail->calc_alpha_const(beta);
-            sim->set_alpha(alpha);
-            sim->simulate(-0.5);
+            alpha = trail->create_alpha_sim(beta,0,deg2rad(1),0.5);
+            sim->set_alpha(deg2rad(3));
+            sim->simulate(-0.05);
             beta = sim->output();
             cout << "alpha:" << rad2deg(alpha)<< "\tbeta:" << rad2deg(beta) << endl;
         }
