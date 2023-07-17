@@ -14,11 +14,11 @@ static inline float pow2(float x){
 }
 
 static void trail_point_out(void* context, point x0, float direction){
-
+    printf("trailer: %f,%f <-> %f\n" x0.x,x0.y,direction);
 }
 
 static void car_point_out(void* context, point x0, float direction){
-
+    printf("car: %f,%f <-> %f\n" x0.x,x0.y,direction);
 }
 
 static bool isNear_points(point x0, point x1, float range){
