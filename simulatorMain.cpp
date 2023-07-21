@@ -1,4 +1,6 @@
-#include <string>  
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_SECURE_NO_WARNINGS
+#include <string> 
 #include <iostream> 
 #include <sstream>   
 
@@ -71,7 +73,7 @@ void init(){
     const float followerbeta = deg2rad(10);
     beta = followerbeta;
     alpha = bbalpha;
-    char *filename = "out.txt";
+    const char *filename = "out.txt";
 
     // open the file for writing
     if ((fp = fopen(filename, "w")) == NULL)
