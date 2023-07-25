@@ -111,35 +111,38 @@ float pushed_follower::create_alpha_sim(float beta_old, float beta_new, float pr
     if(beta_new == beta_old)
         return calc_alpha_const(beta_new);
     else if(beta_new > beta_old){
+        printf("c1\n");
         low = -alpha_max_steer;
         high = calc_alpha_const(beta_old);
         if(calc_beta(-alpha_max_steer, beta_old, distance) < beta_new)
-            return -alpha_max_steer;
+            return -CPP_M_PI;
     }
     else /* beta_new < beta_old*/{
+        printf("c2\n");
         low = calc_alpha_const(beta_old);
         high = alpha_max_steer;
         if(calc_beta(alpha_max_steer, beta_old, distance) > beta_new)
-            return alpha_max_steer;
+            return CPP_M_PI;
     }
     test_val = (high-low) / 2;
     step = test_val / 2;
     float result;
     do{
+        printf("c: %f\n",rad2deg(test_val));
         result = calc_beta(test_val + low, beta_old, distance);
-        if(result < beta_new)
+        if(result > beta_new)
             test_val += step;
         else
             test_val -= step;
         step /= 2;
-    }while(!isNear(result, beta_new, precicion));
+    }while(!isNear(result, beta_new, precicion) &&  step>precicion);
     return result;
 }
 
 void pushed_follower::create_alpha_sim_lookup(float distance){
     for(int x = 0; x < alpha_lookup_size/2;x++)
         for(int y = 0; y < alpha_lookup_size; y++){
-            alpha_sim_lookup[x][y] = calc_beta(x,y,0.5);
+            alpha_sim_lookup[x][y] = create_alpha_sim(get_lookup_reverse(x,beta_max, alpha_lookup_size / 2, false),get_lookup_reverse(y, beta_max, alpha_lookup_size, true),deg2rad(0.25),0.5);
         }
     // todo
 }
