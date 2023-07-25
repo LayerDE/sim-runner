@@ -16,8 +16,8 @@ C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushe
 C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(164,23): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
 C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(174,40): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
   Code wird generiert.
-  2 of 205 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+  4 of 205 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Codegenerierung ist abgeschlossen.
   sim-runner.vcxproj -> C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\sim-runner.exe

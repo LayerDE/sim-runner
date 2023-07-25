@@ -87,7 +87,7 @@ void init(){
     cout << "Simulate..." << endl;
     
 
-    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(20), 20, 50.0,
+    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), deg2rad(20), 20, 50.0,
             get_steering, get_hitch, get_speed,
             0, 0, 0);
 }

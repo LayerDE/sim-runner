@@ -8,7 +8,7 @@ typedef int (*get_int)();
 
 class pushed_follower{
     public:
-        pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2car_axle, float beta_protect, unsigned int lookup_alpha_size, float sim_distance,
+        pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2car_axle, float alpha_max, float beta_protect, unsigned int lookup_alpha_size, float sim_distance,
             get_float steering_ptr, get_float hitch_angle_ptr, get_int speed_ptr,
             double ki, double kp, double kd);
         ~pushed_follower();

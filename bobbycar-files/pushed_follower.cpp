@@ -32,14 +32,14 @@ static bool isNear_points(point x0, point x1, float range) {
         return false;
 }
 
-pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2trail_axle, float beta_protect, unsigned int lookup_alpha_size, float sim_distance,
+pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2trail_axle,float alpha_max, float beta_protect, unsigned int lookup_alpha_size, float sim_distance,
             get_float steering_ptr, get_float hitch_angle_ptr, get_int speed_ptr, double ki, double kp, double kd)
             : simulation(this, 0, 0, (float)c_wheelbase/100.0,(float)rc_axle2hitch/100.0,0,steering_ptr(),(float)hitch2trail_axle/100.0, hitch_angle_ptr(),0.00001){
     hitch2axle = hitch2trail_axle;
     car2hitch = rc_axle2hitch;
     car_wheelbase = c_wheelbase;
     alpha_lookup_size = lookup_alpha_size;
-
+    alpha_max_steer = alpha_max;
     // allocating alpha sim lookup
     alpha_sim_lookup = new float*[alpha_lookup_size/2];
     for(int i = 0; i < alpha_lookup_size/2; i++)
@@ -146,7 +146,7 @@ void pushed_follower::create_alpha_sim_lookup(float distance){
 
 void pushed_follower::export_lookuptalbe(){
     printf("lookup-tables.c\n\nconst unsigned int UNREACHABLE = 0x%X;\n\nconst float* unreachable = (float*)&UNREACHABLE;\n\n", 0x7FBFFFFF);
-    printf("const float lookup_alpha_max = %f;\n", alpha_max_steer);
+    printf("const float lookup_alpha_max = %f;\n", alpha_max);
     printf("const int lookup_index0_max = %i;\n", alpha_lookup_size/2);
     printf("const int lookup_index1_max = %i;\n", alpha_lookup_size);
     printf("const float beta_max = %f;\n", beta_max);
