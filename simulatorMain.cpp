@@ -83,7 +83,7 @@ void init(){
 
 //    const float stepsize = 0.001;
     cout << "Simulator init..." << endl;
-    sim = new simulator(fp, bbx, bby, bbwb, bbr2h, bbangle, bbalpha, followerlen, followerbeta, 0.0010);
+    sim = new simulator(fp, bbx, bby, bbwb, bbr2h, bbangle, bbalpha, followerlen, followerbeta, 0.001);
     cout << "Simulate..." << endl;
     
 

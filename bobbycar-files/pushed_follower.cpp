@@ -34,7 +34,7 @@ static bool isNear_points(point x0, point x1, float range) {
 
 pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2trail_axle, float beta_protect, unsigned int lookup_alpha_size, float sim_distance,
             get_float steering_ptr, get_float hitch_angle_ptr, get_int speed_ptr, double ki, double kp, double kd)
-            : simulation(this, 0, 0, (float)c_wheelbase/100.0,(float)rc_axle2hitch/100.0,0,steering_ptr(),(float)hitch2trail_axle/100.0, hitch_angle_ptr(),0.01){
+            : simulation(this, 0, 0, (float)c_wheelbase/100.0,(float)rc_axle2hitch/100.0,0,steering_ptr(),(float)hitch2trail_axle/100.0, hitch_angle_ptr(),0.00001){
     hitch2axle = hitch2trail_axle;
     car2hitch = rc_axle2hitch;
     car_wheelbase = c_wheelbase;
@@ -49,6 +49,7 @@ pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2t
     simulator_distance = sim_distance;
     create_alpha_lookup();
     create_alpha_sim_lookup(simulator_distance);
+    export_lookuptalbe();
     simulation.set_output(car_point_out,trail_point_out, false);
     alpha_calc = new PID(&isPoint, &output, &setPoint, ki, kp, kd, 0);
 }
@@ -141,6 +142,29 @@ void pushed_follower::create_alpha_sim_lookup(float distance){
             alpha_sim_lookup[x][y] = calc_beta(x,y,0.5);
         }
     // todo
+}
+
+void pushed_follower::export_lookuptalbe(){
+    printf("lookup-tables.c\n\nconst unsigned int UNREACHABLE = 0x%X;\n\nconst float* unreachable = (float*)&UNREACHABLE;\n\n", 0x7FBFFFFF);
+    printf("const float lookup_alpha_max = %f;\n", alpha_max_steer);
+    printf("const int lookup_index0_max = %i;\n", alpha_lookup_size/2);
+    printf("const int lookup_index1_max = %i;\n", alpha_lookup_size);
+    printf("const float beta_max = %f;\n", beta_max);
+    printf("const float alpha_max = %f;\n", alpha_max_steer);
+    printf("const float linear_alpha_beta_faktor = %f;\n", c_alpha_beta_factor);
+    for (int x = 0; x < alpha_lookup_size / 2; x++) {
+        printf("static const float lookup_ab_%i[] = {",x);
+        for (int y = 0; y < alpha_lookup_size; y++) {
+            float alpha = alpha_sim_lookup[x][y];
+            printf("%f,", alpha);
+        }
+        printf("};\n");
+    }
+    printf("const float* lookup_alpha_by_beta[] = {");
+    for (int x = 0; x < alpha_lookup_size / 2; x++) {
+        printf("(const float*)&lookup_ab_%i, ", x);
+    }
+    printf("};\n");
 }
 
 //linear

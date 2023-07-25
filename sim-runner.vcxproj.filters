@@ -39,11 +39,11 @@
     <ClCompile Include="simulator\simulator.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="bobbycar-files\lookup-tables.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="simulator\position.hpp">
-      <Filter>Quelldateien</Filter>
-    </ClInclude>
     <ClInclude Include="bobbycar-files\config.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -69,6 +69,15 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="simulator\simulator.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="bobbycar-files\lookup-tables.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="bobbycar-files\pushed_follower.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="simulator\position.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

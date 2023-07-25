@@ -40,6 +40,7 @@ class pushed_follower{
         int hitch2axle;
         int car2hitch;
         int car_wheelbase;
+        void export_lookuptalbe();
         void create_alpha_lookup();
         void create_alpha_sim_lookup(float distance);
 };

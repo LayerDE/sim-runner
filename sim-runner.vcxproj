@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bobbycar-files\lookup-tables.c" />
     <ClCompile Include="bobbycar-files\math_functions.c" />
     <ClCompile Include="bobbycar-files\PID_v1.cpp" />
     <ClCompile Include="bobbycar-files\pushed_follower.cpp" />
@@ -139,8 +140,10 @@
   <ItemGroup>
     <ClInclude Include="bobbycar-files\config.h" />
     <ClInclude Include="bobbycar-files\defines.h" />
+    <ClInclude Include="bobbycar-files\lookup-tables.h" />
     <ClInclude Include="bobbycar-files\math_functions.h" />
     <ClInclude Include="bobbycar-files\PID_v1.hpp" />
+    <ClInclude Include="bobbycar-files\pushed_follower.hpp" />
     <ClInclude Include="simulator\car.hpp" />
     <ClInclude Include="simulator\follower.hpp" />
     <ClInclude Include="simulator\position.h" />
