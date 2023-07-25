@@ -1,0 +1,18 @@
+﻿  lookup-tables.c
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(18,24): warning C4142: "UNREACHABLE": Neudefinition eines Typs ohne Auswirkungen
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(1,20): message : Siehe Deklaration von "UNREACHABLE"
+  pushed_follower.cpp
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,156): warning C4305: "Argument": Verkürzung von "double" in "float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,130): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,83): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,56): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(45,22): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(58,22): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(80,12): warning C4244: "return": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(108,11): warning C4101: "hl_delta": Unreferenzierte lokale Variable
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(139,22): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(140,26): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(141,50): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(141,48): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(154,40): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+  sim-runner.vcxproj -> C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Debug\sim-runner.exe

@@ -1,0 +1,9 @@
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\lookup-tables.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\math_functions.c;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\math_functions.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\PID_v1.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\PID_v1.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\pushed_follower.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\simulatorMain.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulator\car.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\car.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulator\follower.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\follower.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulator\position.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\position.obj
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulator\simulator.cpp;C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\simulator.obj
