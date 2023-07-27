@@ -87,7 +87,7 @@ void init(){
     cout << "Simulate..." << endl;
     
 
-    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), deg2rad(20), 20, 50.0,
+    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), deg2rad(20), 60, 50.0,
             get_steering, get_hitch, get_speed,
             0, 0, 0);
 }
@@ -109,9 +109,9 @@ int main(int argc, char *argv[]){
         {
             sim->set_output(car_point_out, trail_point_out,false);
             cout << "sim[" << sim->get_distance() << "]" << endl;
-            alpha = trail->create_alpha_sim(beta,0,deg2rad(1),0.5);
-            sim->set_alpha(deg2rad(3));
-            sim->simulate(-0.05);
+            alpha = trail->create_alpha_sim(beta, deg2rad(10), deg2rad(0.25), 0.5);
+            sim->set_alpha(alpha);
+            sim->simulate(-0.1);
             beta = sim->output();
             cout << "alpha:" << rad2deg(alpha)<< "\tbeta:" << rad2deg(beta) << endl;
         }

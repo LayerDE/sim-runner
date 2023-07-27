@@ -70,11 +70,11 @@ double pushed_follower::calculate(int des_speed, float des_steering){ // simple 
 }
 
 float pushed_follower::calc_alpha_const(float beta){ // todo
-    return beta/c_alpha_beta_factor;
+    return -beta/c_alpha_beta_factor;
 }
 
 float pushed_follower::calc_beta_const(float alpha_steer){ // todo
-    return alpha_steer * c_alpha_beta_factor;
+    return -alpha_steer * c_alpha_beta_factor;
 }
 
 static int get_lookup(float in, float max, unsigned int size, bool full_range){
@@ -135,14 +135,14 @@ float pushed_follower::create_alpha_sim(float beta_old, float beta_new, float pr
         else
             test_val -= step;
         step /= 2;
-    }while(!isNear(result, beta_new, precicion) &&  step>precicion);
+    }while(!isNear(result, beta_new, precicion) &&  step > (precicion/c_alpha_beta_factor));
     return result;
 }
 
 void pushed_follower::create_alpha_sim_lookup(float distance){
     for(int x = 0; x < alpha_lookup_size/2;x++)
         for(int y = 0; y < alpha_lookup_size; y++){
-            alpha_sim_lookup[x][y] = create_alpha_sim(get_lookup_reverse(x,beta_max, alpha_lookup_size / 2, false),get_lookup_reverse(y, beta_max, alpha_lookup_size, true),deg2rad(0.25),0.5);
+            alpha_sim_lookup[x][y] = create_alpha_sim(get_lookup_reverse(x,beta_max, alpha_lookup_size / 2, false),get_lookup_reverse(y, beta_max, alpha_lookup_size, true),deg2rad(0.25),0.4);
         }
     // todo
 }
@@ -171,13 +171,15 @@ void pushed_follower::export_lookuptalbe(){
 }
 
 //linear
+float pushed_follower::create_beta_const(float alpha){
+    float V_bw = car_wheelbase / tan(alpha_steer);
+    float V_fbw = sqrt(pow2(V_bw) + pow2(car2hitch));
+    float delta_2 = asin(car2hitch / V_fbw);
+    float delta_1 = asin(hitch2axle / V_fbw);
+    return delta_1 + delta_2;
+}
 void pushed_follower::create_alpha_lookup(){
     float alpha_steer = deg2rad(10);
-    float V_bw = car_wheelbase/tan(alpha_steer);
-    float V_fbw = sqrt(pow2(V_bw)+pow2(car2hitch));
-    float delta_2 = asin(car2hitch/V_fbw);
-    float delta_1 = asin(hitch2axle/V_fbw);
-    float beta = delta_1+delta_2;
-    c_alpha_beta_factor = beta/alpha_steer;
+    c_alpha_beta_factor = create_beta_const(alpha_steer)/alpha_steer;
     alpha_max = calc_alpha_const(beta_max);
 }
