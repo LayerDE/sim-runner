@@ -41,24 +41,40 @@ pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2t
     alpha_lookup_size = lookup_alpha_size;
     alpha_max_steer = alpha_max;
     // allocating alpha sim lookup
-    alpha_sim_lookup = new float*[alpha_lookup_size/2];
-    for(int i = 0; i < alpha_lookup_size/2; i++)
-        alpha_sim_lookup[i] = new float[alpha_lookup_size];
-
     beta_max = beta_protect;
     simulator_distance = sim_distance;
     create_alpha_lookup();
     create_alpha_sim_lookup(simulator_distance);
-    export_lookuptalbe();
+    export_lookuptalbe_c();
     simulation.set_output(car_point_out,trail_point_out, false);
     alpha_calc = new PID(&isPoint, &output, &setPoint, ki, kp, kd, 0);
 }
 
 pushed_follower::~pushed_follower(){
-    delete alpha_calc;
-    for(int i = 0; i < alpha_lookup_size/2; i++)
-        delete [] alpha_sim_lookup[i];
-    delete [] alpha_sim_lookup;
+    deallocate_lookup_table();
+}
+
+void pushed_follower::allocate_lookup_table(int index0, int index1){
+    data_table.constant_table = false;
+    data_table.lookup_index0_max = index0;
+    data_table.lookup_index1_max = index1;
+    //alpha by beta
+    data_table.lookup_alpha_by_beta = new float* [data_table.lookup_index0_max];
+    for (int i = 0; i < data_table.lookup_index0_max; i++)
+        data_table.lookup_alpha_by_beta[i] = new float[data_table.lookup_index1_max];
+    //beta by alpha
+    data_table.lookup_beta_by_alpha = new float* [data_table.lookup_index0_max];
+    for (int i = 0; i < data_table.lookup_index0_max; i++)
+        data_table.lookup_beta_by_alpha[i] = new float[data_table.lookup_index1_max];
+}
+
+void pushed_follower::deallocate_lookup_table() {
+    if (!data_table.constant_table) {
+        delete alpha_calc;
+        for (int i = 0; i < data_table.lookup_index0_max; i++)
+            delete[] alpha_sim_lookup[i];
+        delete[] alpha_sim_lookup;
+    }
 }
 
 double pushed_follower::calculate(int des_speed, float des_steering){ // simple pid
@@ -87,16 +103,26 @@ static float get_lookup_reverse(unsigned int in, float max, unsigned int size, b
 
 
 float pushed_follower::calc_alpha(float beta_old, float beta_new){
-    unsigned int indexA = get_lookup(beta_old, beta_max, alpha_lookup_size/2, false);
-    unsigned int indexB = get_lookup(beta_new, beta_max, alpha_lookup_size, true);
-    return alpha_sim_lookup[indexA][indexB];
+    unsigned int indexA = get_lookup(beta_old, beta_max, data_table.lookup_index0_max, false);
+    unsigned int indexB = get_lookup(beta_new, beta_max, data_table.lookup_index1_max, true);
+    return data_table.lookup_alpha_by_beta[indexA][indexB];
 }
 
-float pushed_follower::calc_beta(float alpha, float beta_old, float distance){
+float pushed_follower::calc_beta(float alpha, float beta_old) {
+    unsigned int indexA = get_lookup(alpha, alpha_max, data_table.lookup_index0_max, false);
+    unsigned int indexB = get_lookup(beta_old, beta_max, data_table.lookup_index1_max, true);
+    return data_table.lookup_beta_by_alpha[indexA][indexB];
+}
+
+float pushed_follower::create_beta_sim(float alpha, float beta_old, float distance){
     // so simple but so complex
     simulation.set_values(0,0,0,alpha,beta_old);
     simulation.simulate(distance);
     return simulation.output();
+}
+
+void pushed_follower::load_lookup(lookup_loader function) {
+    function(&data_table);
 }
 
 float pushed_follower::create_alpha_sim(float beta_old, float beta_new, float precicion, float distance){
@@ -114,14 +140,14 @@ float pushed_follower::create_alpha_sim(float beta_old, float beta_new, float pr
         printf("c1\n");
         low = -alpha_max_steer;
         high = calc_alpha_const(beta_old);
-        if(calc_beta(-alpha_max_steer, beta_old, distance) < beta_new)
+        if(create_beta_sim(-alpha_max_steer, beta_old, distance) < beta_new)
             return -CPP_M_PI;
     }
     else /* beta_new < beta_old*/{
         printf("c2\n");
         low = calc_alpha_const(beta_old);
         high = alpha_max_steer;
-        if(calc_beta(alpha_max_steer, beta_old, distance) > beta_new)
+        if(create_beta_sim(alpha_max_steer, beta_old, distance) > beta_new)
             return CPP_M_PI;
     }
     test_val = (high-low) / 2;
@@ -129,7 +155,7 @@ float pushed_follower::create_alpha_sim(float beta_old, float beta_new, float pr
     float result;
     do{
         printf("c: %f\n",rad2deg(test_val));
-        result = calc_beta(test_val + low, beta_old, distance);
+        result = create_beta_sim(test_val + low, beta_old, distance);
         if(result > beta_new)
             test_val += step;
         else
@@ -147,11 +173,11 @@ void pushed_follower::create_alpha_sim_lookup(float distance){
     // todo
 }
 
-void pushed_follower::export_lookuptalbe(){
+void pushed_follower::export_lookuptalbe_c(){
     printf("lookup-tables.c\n\nconst unsigned int UNREACHABLE = 0x%X;\n\nconst float* unreachable = (float*)&UNREACHABLE;\n\n", 0x7FBFFFFF);
-    printf("const float lookup_alpha_max = %f;\n", alpha_max);
-    printf("const int lookup_index0_max = %i;\n", alpha_lookup_size/2);
-    printf("const int lookup_index1_max = %i;\n", alpha_lookup_size);
+    printf("const float lookup_alpha_max = %f;\n", data_table.alpha_max);
+    printf("const int lookup_index0_max = %i;\n", data_table.lookup_index0_max);
+    printf("const int lookup_index1_max = %i;\n", data_table.lookup_index1_max);
     printf("const float beta_max = %f;\n", beta_max);
     printf("const float alpha_max = %f;\n", alpha_max_steer);
     printf("const float linear_alpha_beta_faktor = %f;\n", c_alpha_beta_factor);
@@ -172,7 +198,7 @@ void pushed_follower::export_lookuptalbe(){
 
 //linear
 float pushed_follower::create_beta_const(float alpha){
-    float V_bw = car_wheelbase / tan(alpha_steer);
+    float V_bw = car_wheelbase / tan(alpha);
     float V_fbw = sqrt(pow2(V_bw) + pow2(car2hitch));
     float delta_2 = asin(car2hitch / V_fbw);
     float delta_1 = asin(hitch2axle / V_fbw);
@@ -182,4 +208,34 @@ void pushed_follower::create_alpha_lookup(){
     float alpha_steer = deg2rad(10);
     c_alpha_beta_factor = create_beta_const(alpha_steer)/alpha_steer;
     alpha_max = calc_alpha_const(beta_max);
+}
+
+bool pushed_follower::protection(){
+    float alpha = get_steering();
+    float beta = get_hitch_angle();
+    int speed = get_speed();
+    float stable_beta = calc_beta_const(alpha);
+    if(beta<beta_max)
+        return true;
+    switch (sign(speed))
+    {
+    case 1: // forward
+        if(fabs(stable_beta)<beta_max)
+            return true;
+        else if(sign(beta) != sign(stable_beta))
+            return true;
+        else
+            return false;
+    case -1: // reverse
+        if(sign(stable_beta) == 0)
+            return false;
+        else if(sign(beta) != sign(stable_beta))
+            return false;
+        else if(fabs(stable_beta)>fabs(beta))
+            return true;
+        else
+            return false;
+    default:
+        return true;
+    }
 }

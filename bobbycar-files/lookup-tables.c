@@ -1,13 +1,15 @@
+#include "lookup-tables.h"
+
 const unsigned int UNREACHABLE = 0x7FBFFFFF;
 
 const float* unreachable = (float*)&UNREACHABLE;
 
-const float lookup_alpha_max = 0.170648;
-const int lookup_index0_max = 30;
-const int lookup_index1_max = 60;
-const float beta_max = 0.349066;
-const float alpha_max = 0.610865;
-const float linear_alpha_beta_faktor = 2.045534;
+static const float lookup_alpha_max = 0.170648;
+static const int lookup_index0_max = 30;
+static const int lookup_index1_max = 60;
+static const float beta_max = 0.349066;
+static const float alpha_max = 0.610865;
+static const float linear_alpha_beta_faktor = 2.045534;
 static const float lookup_ab_0[] = { 0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.347764,0.000000,0.008860,0.027502,0.036871,0.046196,0.055617,0.069645,0.083624,0.092935,0.102327,0.116485,0.130658,0.140004,0.149507,0.159060,0.178232,0.187811,0.197474,0.207185,0.216900,0.236290,0.246333,0.256200,0.265988,0.276081,0.291242,0.306417,0.316561,0.327164,0.337396, };
 static const float lookup_ab_1[] = { 0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,0.350911,-0.004567,0.005688,0.019243,0.037759,0.047146,0.056478,0.065927,0.084755,0.094240,0.103626,0.113008,0.132158,0.141742,0.151332,0.160923,0.170458,0.189867,0.199497,0.209201,0.218945,0.229021,0.243816,0.258759,0.268635,0.278767,0.288895,0.299040,0.314445,0.330152,0.340560, };
 static const float lookup_ab_2[] = { 0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,0.348842,-0.003961,-0.003961,0.011377,0.038459,0.048080,0.057548,0.067036,0.081285,0.095542,0.105050,0.114514,0.124081,0.143414,0.152954,0.162643,0.172426,0.182091,0.201509,0.211507,0.221294,0.231332,0.241160,0.256308,0.271527,0.281675,0.291818,0.301959,0.312316,0.322922,0.333307, };
@@ -38,4 +40,16 @@ static const float lookup_ab_26[] = { 0.349325,0.349325,0.349325,0.349325,0.3493
 static const float lookup_ab_27[] = { 0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,0.352114,-0.003203,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.003975,0.153583,0.327926,0.340112, };
 static const float lookup_ab_28[] = { 0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,0.348986,-0.002706,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.004428,0.159271,0.336591, };
 static const float lookup_ab_29[] = { 0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,0.345836,-0.002125,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.004853,0.164959, };
-const float* lookup_alpha_by_beta[] = { (const float*)&lookup_ab_0, (const float*)&lookup_ab_1, (const float*)&lookup_ab_2, (const float*)&lookup_ab_3, (const float*)&lookup_ab_4, (const float*)&lookup_ab_5, (const float*)&lookup_ab_6, (const float*)&lookup_ab_7, (const float*)&lookup_ab_8, (const float*)&lookup_ab_9, (const float*)&lookup_ab_10, (const float*)&lookup_ab_11, (const float*)&lookup_ab_12, (const float*)&lookup_ab_13, (const float*)&lookup_ab_14, (const float*)&lookup_ab_15, (const float*)&lookup_ab_16, (const float*)&lookup_ab_17, (const float*)&lookup_ab_18, (const float*)&lookup_ab_19, (const float*)&lookup_ab_20, (const float*)&lookup_ab_21, (const float*)&lookup_ab_22, (const float*)&lookup_ab_23, (const float*)&lookup_ab_24, (const float*)&lookup_ab_25, (const float*)&lookup_ab_26, (const float*)&lookup_ab_27, (const float*)&lookup_ab_28, (const float*)&lookup_ab_29, };
+static const float* lookup_alpha_by_beta[] = { (const float*)&lookup_ab_0, (const float*)&lookup_ab_1, (const float*)&lookup_ab_2, (const float*)&lookup_ab_3, (const float*)&lookup_ab_4, (const float*)&lookup_ab_5, (const float*)&lookup_ab_6, (const float*)&lookup_ab_7, (const float*)&lookup_ab_8, (const float*)&lookup_ab_9, (const float*)&lookup_ab_10, (const float*)&lookup_ab_11, (const float*)&lookup_ab_12, (const float*)&lookup_ab_13, (const float*)&lookup_ab_14, (const float*)&lookup_ab_15, (const float*)&lookup_ab_16, (const float*)&lookup_ab_17, (const float*)&lookup_ab_18, (const float*)&lookup_ab_19, (const float*)&lookup_ab_20, (const float*)&lookup_ab_21, (const float*)&lookup_ab_22, (const float*)&lookup_ab_23, (const float*)&lookup_ab_24, (const float*)&lookup_ab_25, (const float*)&lookup_ab_26, (const float*)&lookup_ab_27, (const float*)&lookup_ab_28, (const float*)&lookup_ab_29};
+static const float** lookup_beta_by_alpha = lookup_alpha_by_beta;
+
+void export_lookup(lookup_table* inval) {
+    inval->constant_table = true;
+    inval->alpha_max = alpha_max;
+    inval->beta_max = beta_max;
+    inval->lookup_alpha_by_beta = lookup_alpha_by_beta;
+    inval->lookup_beta_by_alpha = lookup_beta_by_alpha;
+    inval->linear_alpha_beta_faktor = linear_alpha_beta_faktor;
+    inval->lookup_index0_max = lookup_index0_max;
+    inval->lookup_index1_max = lookup_index1_max;
+}
