@@ -3,21 +3,19 @@ C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushe
 C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,130): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
 C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,83): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
 C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(37,56): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(97,12): warning C4244: "return": Konvertierung von "float" in "int", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(144,20): warning C4244: "return": Konvertierung von "double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(151,20): warning C4244: "return": Konvertierung von "const double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(135,11): warning C4101: "hl_delta": Unreferenzierte lokale Variable
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(169,22): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(170,26): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(171,187): warning C4305: "Argument": Verkürzung von "double" in "float"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(184,23): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(186,27): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(193,23): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(202,42): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(220,18): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
-  Code wird generiert.
-  15 of 209 functions ( 7.2%) were compiled, the rest were copied from previous compilation.
-    4 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
-  Codegenerierung ist abgeschlossen.
-  sim-runner.vcxproj -> C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\sim-runner.exe
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(95,12): warning C4244: "return": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(142,20): warning C4244: "return": Konvertierung von "double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(149,20): warning C4244: "return": Konvertierung von "const double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(133,11): warning C4101: "hl_delta": Unreferenzierte lokale Variable
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(231,42): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(249,18): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+  simulatorMain.cpp
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(29,20): warning C4244: "return": Konvertierung von "double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(32,22): warning C4244: "return": Konvertierung von "double" in "float", möglicher Datenverlust
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(71,24): warning C4305: "Initialisierung": Verkürzung von "double" in "float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(71,38): warning C4305: "Initialisierung": Verkürzung von "double" in "float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(71,58): warning C4305: "Initialisierung": Verkürzung von "double" in "float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(86,97): warning C4305: "Argument": Verkürzung von "double" in "float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(90,32): error C2661: "pushed_follower::pushed_follower": Keine überladene Funktion akzeptiert 13 Argumente
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(90,32): message : bei Anpassung der Argumentliste "(double, double, double, float, float, int, double, overloaded-function, overloaded-function, overloaded-function, int, int, int)"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\simulatorMain.cpp(114,28): warning C4305: "Argument": Verkürzung von "double" in "float"
