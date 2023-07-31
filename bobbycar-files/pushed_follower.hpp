@@ -43,7 +43,7 @@ class pushed_follower{
         int car_wheelbase;
         void export_lookuptalbe_c();
         void create_alpha_lookup();
-        void create_alpha_sim_lookup(float distance);
+        void create_alpha_beta_sim_lookup(float distance);
 
         void allocate_lookup_table(int index0, int index1);
         void deallocate_lookup_table();
