@@ -174,7 +174,8 @@ void pushed_follower::create_alpha_beta_sim_lookup(float distance){
             data_table.lookup_alpha_by_beta[x][y] = create_alpha_sim(
                 get_lookup_reverse(x,data_table.beta_max, data_table.lookup_index0_max, false),
                     get_lookup_reverse(y, data_table.beta_max, data_table.lookup_index1_max, true),
-                        get_lookup_reverse(1,data_table.beta_max,data_table.lookup_index1_max,false)/2.0f, distance);
+                        get_lookup_reverse(1,data_table.beta_max,data_table.lookup_index1_max,false)/2.0f, // precision
+                        distance);
         }
     // todo
     for (int x = 0; x < data_table.lookup_index0_max; x++)
