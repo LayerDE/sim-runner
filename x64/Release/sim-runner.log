@@ -1,17 +1,73 @@
-﻿  pushed_follower.cpp
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(36,12): warning C4244: "return": Konvertierung von "float" in "int", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(46,156): warning C4305: "Argument": Verkürzung von "double" in "float"
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(46,130): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(46,83): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(46,56): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(146,20): warning C4244: "return": Konvertierung von "double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(153,20): warning C4244: "return": Konvertierung von "const double" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(137,11): warning C4101: "hl_delta": Unreferenzierte lokale Variable
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(242,42): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
-C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\pushed_follower.cpp(262,18): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+﻿  lookup-tables.c
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(3,32): warning C4142: "UNREACHABLE": Neudefinition eines Typs ohne Auswirkungen
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.h(23,21): message : Siehe Deklaration von "UNREACHABLE"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(3,20): warning C4305: "Initialisierung": Verkürzung von "int" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(10,13): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(11,13): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(12,13): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(15,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(16,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(17,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(18,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(19,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(20,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(21,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(22,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(23,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(24,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(25,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(26,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(27,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(28,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(29,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(30,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(31,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(32,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(33,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(34,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(35,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(36,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(37,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(38,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(39,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(40,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(41,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(42,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(43,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(44,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(47,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(48,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(49,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(50,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(51,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(52,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(53,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(54,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(55,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(56,36): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(57,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(58,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(59,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(60,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(61,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(62,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(63,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(64,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(65,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(66,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(67,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(68,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(69,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(70,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(71,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(72,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(73,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(74,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(75,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
+C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\bobbycar-files\lookup-tables.c(76,37): warning C4305: "Initialisierung": Verkürzung von "double" in "const float"
   Code wird generiert.
-  3 of 212 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+  0 of 212 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Codegenerierung ist abgeschlossen.
   sim-runner.vcxproj -> C:\Users\the_g\Documents\bachlor_finisher\thesis\sim-runner\x64\Release\sim-runner.exe
