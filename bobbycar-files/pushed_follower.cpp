@@ -13,11 +13,11 @@ static inline float pow2(float x){
   return x*x;
 }
 
-static void trail_point_out(void* context, point x0, float direction){
+static void trail_point_out(void* context, point x0, double direction){
     printf("trailer: %f,%f <-> %f\n", x0.x,x0.y,direction);
 }
 
-static void car_point_out(void* context, point x0, float direction){
+static void car_point_out(void* context, point x0, double direction){
     printf("car: %f,%f <-> %f\n", x0.x,x0.y,direction);
 }
 
@@ -43,7 +43,7 @@ static float get_lookup_reverse(unsigned int in, float max, unsigned int size, b
 
 pushed_follower::pushed_follower(int c_wheelbase, int rc_axle2hitch, int hitch2trail_axle,float alpha_max, unsigned int lookup_alpha_size, float sim_distance,
             get_float steering_ptr, get_float hitch_angle_ptr, get_int speed_ptr, double ki, double kp, double kd)
-            : simulation(this, 0, 0, (float)c_wheelbase/100.0,(float)rc_axle2hitch/100.0,0,steering_ptr(),(float)hitch2trail_axle/100.0, hitch_angle_ptr(),0.00001){
+            : simulation(this, 0, 0, (float)c_wheelbase/100.0,(float)rc_axle2hitch/100.0,0,steering_ptr(),(float)hitch2trail_axle/100.0, hitch_angle_ptr(),0.001){
     hitch2axle = hitch2trail_axle;
     car2hitch = rc_axle2hitch;
     printf("lookup: %f full: %i %f\n",rad2deg(get_lookup_reverse(get_lookup(deg2rad(20.0), alpha_max, 60, false), alpha_max, 60, false)), get_lookup(deg2rad(-1), alpha_max, 60, true), rad2deg(get_lookup_reverse(get_lookup(deg2rad(-1.0), alpha_max, 60, true), alpha_max, 60, true)));
@@ -279,6 +279,6 @@ bool pushed_follower::protection(){
         else
             return false;
     default:
-        return true;
+        return true; // not relevant because if speed is 0 the car doesn't move and the output will do nothing
     }
 }

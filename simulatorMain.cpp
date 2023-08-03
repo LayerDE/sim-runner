@@ -41,11 +41,11 @@ void _point_out(FILE *fp, const char* name, float x, float y, float direction){
 }
 
 
-void trail_point_out(void* context, point x0, float direction){
+void trail_point_out(void* context, point x0, double direction){
     _point_out((FILE*)context, "Trailer", x0.x, x0.y, direction);
 }
 
-void car_point_out(void* context, point x0, float direction){
+void car_point_out(void* context, point x0, double direction){
     _point_out((FILE*)context, "Car", x0.x, x0.y, direction);
 }
 
@@ -87,9 +87,9 @@ void init(){
     cout << "Simulate..." << endl;
     
 
-    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), 60, 50.0,
-            get_steering, get_hitch, get_speed,
-            0, 0, 0);
+    //trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), 60, 50.0,
+    //       get_steering, get_hitch, get_speed,
+    //      0, 0, 0);
 }
 
 void cleanup(){
@@ -109,7 +109,8 @@ int main(int argc, char *argv[]){
         {
             sim->set_output(car_point_out, trail_point_out,false);
             cout << "sim[" << sim->get_distance() << "]" << endl;
-            alpha = trail->create_alpha_sim(beta, deg2rad(10), deg2rad(0.25), 0.5);
+            //alpha = trail->create_alpha_sim(beta, deg2rad(10), deg2rad(0.25), 0.5);
+            alpha = deg2rad(1);
             sim->set_alpha(alpha);
             sim->simulate(-0.1);
             beta = sim->output();
