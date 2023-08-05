@@ -70,7 +70,7 @@ void init(){
 
     const float bbwb = 0.35, bbr2h = 0.05, followerlen = 0.60;
     const float bbx = 0.0, bby = 0.0, bbangle = 0.0, bbalpha = deg2rad(20);
-    const float followerbeta = deg2rad(10);
+    const float followerbeta = deg2rad(180);
     beta = followerbeta;
     alpha = bbalpha;
     const char *filename = "out.txt";
@@ -112,7 +112,7 @@ int main(int argc, char *argv[]){
             //alpha = trail->create_alpha_sim(beta, deg2rad(10), deg2rad(0.25), 0.5);
             alpha = deg2rad(1);
             sim->set_alpha(alpha);
-            sim->simulate(-0.1);
+            sim->simulate(0.1);
             beta = sim->output();
             cout << "alpha:" << rad2deg(alpha)<< "\tbeta:" << rad2deg(beta) << endl;
         }
