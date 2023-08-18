@@ -70,7 +70,7 @@ void init(){
 
     const float bbwb = 0.35, bbr2h = 0.05, followerlen = 0.60;
     const float bbx = 0.0, bby = 0.0, bbangle = 0.0, bbalpha = deg2rad(20);
-    const float followerbeta = deg2rad(180);
+    const float followerbeta = deg2rad(0);
     beta = followerbeta;
     alpha = bbalpha;
     const char *filename = "out.txt";
@@ -87,9 +87,7 @@ void init(){
     cout << "Simulate..." << endl;
     
 
-    //trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), 60, 50.0,
-    //       get_steering, get_hitch, get_speed,
-    //      0, 0, 0);
+    trail = new pushed_follower(L_WHEELBASE, L_REAR_TO_HITCH, L_HITCH_TO_FOLLOWER_AXLE, deg2rad(35), 60, 50.0);
 }
 
 void cleanup(){
@@ -110,7 +108,7 @@ int main(int argc, char *argv[]){
             sim->set_output(car_point_out, trail_point_out,false);
             cout << "sim[" << sim->get_distance() << "]" << endl;
             //alpha = trail->create_alpha_sim(beta, deg2rad(10), deg2rad(0.25), 0.5);
-            alpha = deg2rad(1);
+            alpha = trail->calc_alpha_linear(beta, deg2rad(10));
             sim->set_alpha(alpha);
             sim->simulate(0.1);
             beta = sim->output();
